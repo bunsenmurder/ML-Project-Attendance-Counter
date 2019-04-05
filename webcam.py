@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 
 
 
-face_cascade = cv2.CascadeClassifier(r'C:\Users\Brandon\Desktop\classifier\cascade.xml')
+face_cascade = cv2.CascadeClassifier('classifier/cascade.xml')
 
 video_capture = cv2.VideoCapture(1)
 

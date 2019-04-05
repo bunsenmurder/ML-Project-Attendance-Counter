@@ -3,14 +3,14 @@ import os
 path = r'C:\Users\Kyle\Desktop\101_ObjectCategories'
 newfile = r'C:\Users\Kyle\Desktop\Face_DataBase'
 
-filearray=os.listdir(path)
+filearray= ['Pos', 'Neg']
 
 i =0
 y,x=1,1
 sum= 0
 
 while i < len(filearray):
-    fold_p = path+ '\' +filearray[i]
+    fold_p = path+ '\' + filearray[i]
     fold_d= os.listdir(fold_p)
     j=0
     while j < len(fold_d):

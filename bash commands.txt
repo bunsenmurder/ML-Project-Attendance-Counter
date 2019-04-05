@@ -1,0 +1,20 @@
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 50 -h 64"
+
+or 
+
+#Windows Version of command
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 50 -h 64"
+
+python mergevec.py -v samples -o samples.vec
+
+## Training the model.
+# 10 stages for haar cascade training. Not recommended option to choose.
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 10 -precalcValBufSize 4096 -precalcIdxBufSize 4096 -featureType HAAR -minHitRate 0.995 -maxFalseAlarmRate 0.5 -w 50 -h 64
+
+Or 
+
+# 20 stages of haar Cascade training
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 4096 -precalcIdxBufSize 4096 -featureType HAAR -minHitRate 0.995 -maxFalseAlarmRate 0.5 -w 50 -h 64
+
+##Note can change the parameters to how you see fit, just followed the documentation found here.
+https://docs.opencv.org/3.4.2/dc/d88/tutorial_traincascade.html
