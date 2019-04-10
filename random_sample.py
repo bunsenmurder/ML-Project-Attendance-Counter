@@ -40,7 +40,7 @@ while i < len(filearray):
     if filearray[i] == 'Neg':
         f = open("negatives.txt","a+")
         f.truncate(0)
-        nums = random.sample(range(1,3019), neg_in)
+        nums = random.sample(range(1,3020), neg_in)
         while j < neg_in:
             text_p = 'neg_' + str(nums[j]) + '.jpg'
             file_path = nfile + '/' + filearray[i] + '/' + text_p
@@ -55,7 +55,7 @@ while i < len(filearray):
     if filearray[i] == 'Pos':
         f = open("positives.txt","a+")
         f.truncate(0)
-        nums = random.sample(range(1,pos_set), pos_in)
+        nums = random.sample(range(1,pos_set + 1), pos_in)
         while j < pos_in:
             text_p = 'pos_' + str(nums[j]) + file_ext
             file_path = nfile + '/' + filearray[i] + '/' + text_p

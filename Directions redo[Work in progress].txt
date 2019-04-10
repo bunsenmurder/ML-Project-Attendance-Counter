@@ -1,16 +1,48 @@
 After dependancies are installed, open up gitbash and follow these instructions.
-1. git clone https://github.com/bunsenmurder/ML-Project-Attendance-Counter
-2. cd ML-Proj*
-3. cd tar
-4. python3 runFirst.py
-5. cd ..
-6. pip3 install scipy Pillow
-7. python3 crop_pos.py
-8. python3 random_sample.py
-9. Type 150 for positive, 1000 for negative. And pick the Caltech data set
-10. Download from here https://sourceforge.net/projects/opencvlibrary/files/3.4.5/opencv-3.4.5-vc14_vc15.exe/download and run the extractor, you can extract this to any folder you want.
-11. Once the contents are extract navigate to the folder then go to build > x64 > vc15 > bin
-12. Copy the contents of that folder to the ML-Project-Attendance-Counter
-13. Run perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 50 -h 64"
-14. python3 mergevec.py -v samples -o samples.vec
-15. opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxFalseAlarmRate 0.5 -maxDepth 2 -w 50 -h 64 | tee output.txt
+1. Download and install this version of python first https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe
+
+2. Then download and install Perl from here http://strawberryperl.com 
+
+3. Then download and run this git installer, make sure it installs everything https://git-scm.com/downloads
+
+4. Then up the command prompt and run the command below.
+
+5. git clone https://github.com/bunsenmurder/ML-Project-Attendance-Counter
+
+6. After that close command prompt and open up the git bash application. Then follow the commands listed out below from there.
+
+7. cd ML-Proj*
+
+8. cd tar
+
+9. python runFirst.py
+
+10. cd ..
+
+11. pip install scipy Pillow
+
+12. python crop_pos.py
+
+13. For the crop_pos.py it will ask you which data set to choose, enter 1 for the Caltech dataset.
+
+14. python random_sample.py
+
+15. For random_sample.py it will ask you to pick how many positive and negative samples you want pick 250 for positive, 2000 for negative. And it will ask you to pick  a data set which in this case with be the Caltech data set.
+
+16. Download from here: https://sourceforge.net/projects/opencvlibrary/files/3.4.5/opencv-3.4.5-vc14_vc15.exe/download and run the extractor, you can extract this to any folder you want.
+
+17. Once the contents are extract navigate to the folder then go to build > x64 > vc15 > bin
+
+18. Copy the contents of that folder to the ML-Project-Attendance-Counter
+
+19. Run 
+perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"
+
+20. Then run 
+python3 mergevec.py -v samples -o samples.vec
+
+21. The open up the cmd and cd back to the main project directory and run the next command below.
+
+22. opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxFalseAlarmRate 0.5 -maxDepth 2 -w 50 -h 64 > output_CAL_2.txt | type output_CAL_2.txt
+
+23. This process will can take from a 1-3 days, so be patient and let it run. Once done take the output_CAL_2.txt and the classifier folder and zip them into a zip archive. Then upload to Google Drive and share on the discord.
