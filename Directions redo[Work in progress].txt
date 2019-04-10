@@ -1,0 +1,16 @@
+After dependancies are installed, open up gitbash and follow these instructions.
+1. git clone https://github.com/bunsenmurder/ML-Project-Attendance-Counter
+2. cd ML-Proj*
+3. cd tar
+4. python runFirst.py
+5. cd ..
+6. pip install scipy Pillow
+7. python crop_pos.py
+8. python random_sample.py
+9. Type 150 for positive, 1000 for negative. And pick the Caltech data set
+10. Download from here https://sourceforge.net/projects/opencvlibrary/files/3.4.5/opencv-3.4.5-vc14_vc15.exe/download and run the extractor, you can extract this to any folder you want.
+11. Once the contents are extract navigate to the folder then go to build > x64 > vc15 > bin
+12. Copy the contents of that folder to the ML-Project-Attendance-Counter
+13. Run perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 50 -h 64"
+14. python mergevec.py -v samples -o samples.vec
+15. opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxFalseAlarmRate 0.5 -maxDepth 2 -w 50 -h 64 | tee output.txt

@@ -1,20 +1,52 @@
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 50 -h 64"
+##Note can change the parameters to how you see fit, just followed the documentation found here.
+https://docs.opencv.org/3.4.2/dc/d88/tutorial_traincascade.html
+
+Total False Alarm rate is calculated as set false alarm rate which is FA_true = FA^number of training stages. ex. .5^20 = 9.6e-07 or Almost 0% false alarm rate.
+True hit rate = HR^number of training stages. Ex: .999^20 = .98 or 98% accuracy
+
+##Caltech samples Models:
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64" | tee output.txt
 
 or 
 
 #Windows Version of command
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 50 -h 64"
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64" > output.txt | type output.txt
 
 python mergevec.py -v samples -o samples.vec
 
-## Training the model.
-# 10 stages for haar cascade training. Not recommended option to choose.
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 10 -precalcValBufSize 4096 -precalcIdxBufSize 4096 -featureType HAAR -minHitRate 0.995 -maxFalseAlarmRate 0.5 -w 50 -h 64
+New Model 1: MaxDepth of two for tree depth, with change of .999% min hit rate accuracy.
+Use random sample of 100
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"  
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output.txt
 
-Or 
+New Model 2:
+Use random sample of 250 Positives
+perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 64"
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output.txt
 
-# 20 stages of haar Cascade training
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 4096 -precalcIdxBufSize 4096 -featureType HAAR -minHitRate 0.995 -maxFalseAlarmRate 0.5 -w 50 -h 64
+New Model 3: 
+Use random sample of 435 Positives 
+perl bin/createsamples.pl positives.txt negatives.txt samples 7500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 5000 -numNeg 3000 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output.txt
 
-##Note can change the parameters to how you see fit, just followed the documentation found here.
-https://docs.opencv.org/3.4.2/dc/d88/tutorial_traincascade.html
+##MIT sample Models:
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxidev 40 -w 20 -h 20"
+
+# Create samples for our new dataset
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -w 20 -h 20"
+
+
+New Model 1: MaxDepth of two for tree depth, with change of .999% min hit rate accuracy.
+Use random sample of 500 Positives
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxidev 40 -w 20 -h 20"  
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 20 -h 20 | tee output.txt
+
+New Model 2:
+Use random sample of 1000 Positives
+perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxidev 40 -w 20 -h 20"
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 20 -h 20 | tee output.txt
+
+New Model 3:
+Use random sample of 2000 Positives
+perl bin/createsamples.pl positives.txt negatives.txt samples 7500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxidev 40 -w 20 -h 20" 
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 5000 -numNeg 3000 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 50 -h 20 | tee output.txt
