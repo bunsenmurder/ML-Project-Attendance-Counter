@@ -1,59 +1,73 @@
-##Note can change the parameters to how you see fit, just followed the documentation found here.
-https://docs.opencv.org/3.4.2/dc/d88/tutorial_traincascade.html
+##Note Documentation for OpenCV create_samples and opencv_traincascade are documented here: https://docs.opencv.org/3.4.5/dc/d88/tutorial_traincascade.html
 
-Total False Alarm rate is calculated as set false alarm rate which is FA_true = FA^number of training stages. ex. .5^20 = 9.6e-07 or Almost 0% false alarm rate.
+Total False Alarm rate is calculated as set false alarm rate which is FA_true = FA^number of training stages  - Ex: .5^20 = 9.6e-07 or Almost 0% false alarm rate.
 True hit rate = HR^number of training stages. Ex: .999^20 = .98 or 98% accuracy
 
-##Caltech samples Models:
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64" | tee output.txt
 
-or 
+##Caltech sample Models - Set MaxDepth to 2(which changes from using decision stumps to decision trees), with a minHitRate of .999 accuracy.
+New Model 1[Currently running]:
+Choose random sample of 100 Positives, 1000 negatives when prompted by the 'random_sample.py' script.
 
-#Windows Version of command
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64" 
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"  
+python mergevec.py -v samples -o samples.vec
+
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_CAL_1.txt
+
+
+New Model 2:
+Choose random sample of 250 Positives, 2000 negatives when prompted by the 'random_sample.py' script.
+
+perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"
 
 python mergevec.py -v samples -o samples.vec
 
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 20 -h 20 > output.txt | type output.txt
-
-
-
-New Model 1[Currently running]: MaxDepth of two for tree depth, with change of .999% min hit rate accuracy.
-Use random sample of 100
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"  
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output.txt
-
-New Model 2:
-Use random sample of 250 Positives
-perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_CAL_2.txt
 
-New Model 3[Currently Running: 
-Use random sample of 435 Positives 
+
+New Model 3[Currently Running]: 
+Choose random sample of 435 Positives, 3020 negatives when prompted by the 'random_sample.py' script.
+
 perl bin/createsamples.pl positives.txt negatives.txt samples 7500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"
+
+python mergevec.py -v samples -o samples.vec
+
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 5000 -numNeg 3000 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_CAL_3.txt
 
-##MIT sample Models:
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxidev 40 -w 20 -h 20"
-
-# Create samples for our new dataset
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -w 20 -h 20"
 
 
-New Model 1: MaxDepth of two for tree depth, with change of .999% min hit rate accuracy.
-Use random sample of 500 Positives
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 0 -maxyangle 0 maxzangle 0 -maxidev 40 -w 40 -h 40"  
+##MIT CBCL sample Models - Set MaxDepth to 2(which changes from using decision stumps to decision trees), with a minHitRate of .999 accuracy.
+
+New Model 1: 
+Choose random sample of 500 Positives, 1000 negatives when prompted by the 'random_sample.py' script.
+
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 0 -maxyangle 0 maxzangle 0 -maxidev 40 -w 40 -h 40"
+
+python mergevec.py -v samples -o samples.vec
 
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 20 -h 20 | tee output_MIT_1.txt
 
 New Model 2:
-Use random sample of 1000 Positives
+Choose random sample of 1000 Positives, 2000 negatives when prompted by the 'random_sample.py' script.
+
 perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 0 -maxyangle 0 maxzangle 0 -maxidev 40 -w 40 -h 40"  
 
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 40 -h 40 | tee output_MIT_2.txt
 
 New Model 3[Currently Running]:
-Use random sample of 2000 Positives
+Choose random sample of 2000 Positives, 3020 negatives when prompted by the 'random_sample.py' script.
+
 perl bin/createsamples.pl positives.txt negatives.txt samples 7500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 0 -maxyangle 0 maxzangle 0 -maxidev 40 -w 40 -h 40"
   
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 5000 -numNeg 3000 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 40 -h 40 | tee output.txt
+
+
+
+
+Example of how to run these commands if using a Windows machine.
+Open in Gitbash:
+perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64" 
+
+python mergevec.py -v samples -o samples.vec
+
+Open in Command Prompt: 
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 50 -h 64 > output.txt | type output.txt

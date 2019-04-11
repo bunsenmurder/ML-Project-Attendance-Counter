@@ -1,28 +1,40 @@
-sudo apt-get update
-sudo apt-get upgrade
+1. sudo apt-get update
 
-Run:
-python3 --version
-Ensure it says Python 3.6.x, if not downgrade your python version to any 3.6.x version.
+2. sudo apt-get upgrade
 
+3. python3 --version
 
-sudo apt-get install python3-dev python3-pip build-essential cmake unzip pkg-config libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran unzip
+4. Note: Ensure it says Python 3.6.x, if not install python 3.6.x and add to path.
 
-pip3 install numpy
-wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.5.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.5.zip
-unzip opencv.zip
-unzip opencv_contrib.zip
-mv opencv-3.4.5 opencv
-mv opencv_contrib-3.4.5 opencv_contrib
-cd ~/opencv
-mkdir build
-cd build
+5. sudo apt-get install python3-dev python3-pip build-essential cmake unzip pkg-config libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran unzip
 
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D OPENCV_ENABLE_NONFREE=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules -D PYTHON_EXECUTABLE=/usr/bin/python3 -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3 -D BUILD_EXAMPLES=ON ..
-#Chnage the number after the j, to the amount of cpu cores on your pc
+6. pip3 install numpy scipy Pillow
+
+7. wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.5.zip
+
+8. wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.5.zip
+
+9. unzip opencv.zip
+
+10. unzip opencv_contrib.zip
+
+11. mv opencv-3.4.5 opencv
+
+12. mv opencv_contrib-3.4.5 opencv_contrib
+
+13. cd ~/opencv
+
+14. mkdir build
+
+15. cd build
+
+16. cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D OPENCV_ENABLE_NONFREE=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules -D PYTHON_EXECUTABLE=/usr/bin/python3 -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3 -D BUILD_EXAMPLES=ON ..
+
+17.#Change the number after the j, to the amount of cpu cores on your pc
 make -j4
 
-sudo make install
-sudo ldconfig
-pkg-config --modversion opencv
+18. sudo make install
+
+19. sudo ldconfig
+
+20. pkg-config --modversion opencv

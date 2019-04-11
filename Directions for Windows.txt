@@ -1,0 +1,44 @@
+After dependancies are installed, open up gitbash and follow these instructions.
+1. Download and install this version of python first https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe
+
+2. Then download and install Perl from here http://strawberryperl.com 
+
+3. Then download and run this git installer, make sure it installs everything https://git-scm.com/downloads
+
+4. Then up the command prompt and run the command below.
+
+5. git clone https://github.com/bunsenmurder/ML-Project-Attendance-Counter
+
+6. After that close command prompt and open up the git bash application. Then follow the commands listed out below from there.
+
+7. cd ML-Proj*
+
+8. cd tar
+
+9. python runFirst.py
+
+10. cd ..
+
+11. pip install scipy Pillow
+
+12. python crop_pos.py
+
+13. For the crop_pos.py it will ask you which data set to choose, enter the number that corresponds with the dataset(Cal tech 101 or MIT CBCL) you wish to use.
+
+14. python random_sample.py
+
+15. For random_sample.py it will ask you to pick how many positive and negative samples you want reference the "bash commands.txt" and see the amount of samples it recommends for the particular model you choose.. And it will ask you to pick  a data set which in this case with be the Caltech data set.
+
+16. Download from here: https://sourceforge.net/projects/opencvlibrary/files/3.4.5/opencv-3.4.5-vc14_vc15.exe/download and run the extractor, you can extract this to any folder you want.
+
+17. Once the contents are extract navigate to the folder then go to build > x64 > vc15 > bin
+
+18. Copy the contents of that folder to the ML-Project-Attendance-Counter
+
+19. Next open up the "bash commands.txt" file and run the commands in order for the model you are choosing. Make sure to check the example section all the way at bottom of the file, so you can adjust your commands to run for windows. 
+
+20. The output of your model tests will be stored in a file called "output_XXX_X.txt" where X is replaced with your type of model, which located in the root directory.
+
+21. python3 webcam.py
+
+22. The application would be running now, press q to take a picture of the current attendace and quit the application.

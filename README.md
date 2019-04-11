@@ -1,12 +1,28 @@
 # Our Project
-## Directions
-1. Ensure OpenCV 3.4.x, Python, and Perl are installed and within path.
-2. Run the runFirst.py file found with the tar folder, it will extract all the folder ImageDB where our data set is stored.
-3. Next run the crop_pos.py file next, it will crop all the positive images based on their bounding boxes and convert them to 100x128 sizes.
-3. Next run the random_sample.py file, it will give you the option to set the amount of random positive and random negative samples you would like to select. Just make sure NOT to select more 435 positive samples or more than 7897 negative samples. 
-4. Next open up the bash commands.txt file and run the commands in order. Make sure to follow the comments!
-5. From there your trained model will be located in the classifier directory, and most likely will replace any previous models there.
-6. Run the webcam.py file to see how well your model runs.
+## Dependencies: 
+OpenCV 3.4.X
+Perl 5.x.x
+Python 3.6.X
+## Directions For Linux 
+1. Follow the "INSTALLING OPENCV ON UBUNTU.txt" for install instructions of dependances on Linux.
+2. git clone git@github.com:bunsenmurder/ML-Project-Attendance-Counter.git
+3. cd ML-Project-Attendance-Counter
+4. cd tar
+5. python3 runFirst.py
+6. cd ..
+7. python3 crop_pos.py
+8. For the "crop_pos.py" script it will ask you which data set to choose, enter the number that corresponds with the dataset(Cal tech 101 or MIT CBCL) you wish to use.
+9. python random_sample.py
+10. For random_sample.py it will ask you to pick how many positive and negative samples you want reference the "bash commands.txt" and see the amount of samples it recommends for the particular model you choose. Just make sure NOT to select more 435 positive samples or more than 3020 negative samples.
+11. Make sure you backup any previously trained models then remove all files within the classifier directory. 
+12. Next open up the "bash commands.txt" file and run the commands in order for the model you are choosing. Note: The opencv_traincascade process will can take from a 1-5 days depending on your computing, so be patient and let it run.
+13. Once you follow the directions for your particular model, the model itself should be saved as "cascade.xml" in the classifier directory. 
+15. The output of your model tests will be stored in a file called "output_XXX_X.txt" where X is replaced with your type of model, which located in the root directory.
+14. python3 webcam.py
+15. The application would be running now, press q to take a picture of the current attendace and quit the application.
+
+## Directions for Windows
+1. Check the "Directions for Windows.txt" for how to run on a Windows Machine.
 
 ## The problem we wanted to solve.
 Teachers use up valuable class time taking attendance when they could be spending more time teaching. In addition, there are several loopholes to traditional attendance systems. For example, one student can write another student’s name on an attendance sheet. At a large university with several hundred students, attendance can take a very long time if it is done at all. Generally speaking, taking roll at the beginning of class is an inconvenience that can be avoided, so we’re creating a system to solve this problem.
