@@ -1,8 +1,8 @@
-# Our Project
 ## Dependencies: 
-OpenCV 3.4.X
-Perl 5.x.x
-Python 3.6.X
+- OpenCV 3.4.X
+- Perl 5.x.x
+- Python 3.6.X
+
 ## Directions For Linux 
 1. Follow the "INSTALLING OPENCV ON UBUNTU.txt" for install instructions of dependances on Linux.
 2. git clone git@github.com:bunsenmurder/ML-Project-Attendance-Counter.git
