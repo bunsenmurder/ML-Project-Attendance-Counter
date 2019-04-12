@@ -19,7 +19,7 @@ After dependancies are installed, open up gitbash and follow these instructions.
 
 10. cd ..
 
-11. pip install scipy Pillow
+11. pip install scipy Pillow opencv-python
 
 12. python crop_pos.py
 

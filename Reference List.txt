@@ -1,56 +1,43 @@
-Possibility I can use:
-https://www.pyimagesearch.com/2018/06/11/how-to-build-a-custom-face-recognition-dataset/
-https://www.pyimagesearch.com/2018/09/24/opencv-face-recognition/
+Dataset sources:
+Face_easy category from http://www.vision.caltech.edu/Image_Datasets/Caltech101/
+negatives dataset from https://github.com/handaga/tutorial-haartraining/tree/master/data/negatives
 
-Reference List:
-https://github.com/wulfebw/mergevec
+External Scripts:
+mergevc.py - https://github.com/wulfebw/mergevec
+createsamples.pl - https://github.com/mrnugget/opencv-haar-classifier-training
+
+Tutorials:
 https://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html
 https://memememememememe.me/post/training-haar-cascades/
-https://docs.opencv.org/3.4.2/dc/d88/tutorial_traincascade.html
-https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf
-http://www.willberger.org/cascade-haar-explained/
-http://note.sonots.com/SciSoftware/haartraining.html#w0a08ab4
-http://www.willberger.org/cascade-haar-explained/
-http://www.vision.caltech.edu/Image_Datasets/Caltech101/
-
-find this article and use it as a reference in final report
-"Rapid Object Detection using a Boosted Cascade of Simple Features"
-
-
-Read this more:
-http://answers.opencv.org/question/185570/why-we-should-create-vec-files-to-train-harr-cascade-classifier/
-https://stackoverflow.com/questions/21093268/training-a-haar-cascade-took-very-little-time
-https://stackoverflow.com/questions/38891052/opencv-size-of-images-to-create-an-xml-training-haartraining
-https://stackoverflow.com/questions/35182654/why-does-opencv-recognize-the-object-only-in-training-images
-
-
-Links that helped determine the samples themselves were wrong:
-http://answers.opencv.org/question/124638/opencv_createsamples-doesnt-create-samples/
+https://docs.opencv.org/3.4.5/dc/d88/tutorial_traincascade.html
 http://note.sonots.com/SciSoftware/haartraining.html
+
+Academic References[Make sure to MLA format these]:
+https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf
+http://www.multimedia-computing.de/mediawiki/images/5/52/MRL-TR-May02-revised-Dec02.pdf
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.214.9150&rep=rep1&type=pdf
+
+Forums:
+https://stackoverflow.com/questions/38891052/opencv-size-of-images-to-create-an-xml-training-haartraining
 https://stackoverflow.com/questions/21310446/opencv-positive-samples-dimensions
-http://answers.opencv.org/question/107285/picture-and-samples-sizes-opencv_traincascade/
+http://answers.opencv.org/question/8891/trouble-when-use-opencv_traincascadeexe/
+http://answers.opencv.org/question/98754/how-to-train-classifiers-the-best-way-possible/
+http://answers.opencv.org/question/123597/traincascade-still-confused-about-acceptanceratio/
+https://stackoverflow.com/questions/33726593/ideal-images-for-viola-jones-haar-cascade-in-opencv
+http://answers.opencv.org/question/7141/about-traincascade-paremeters-samples-and-other/
+https://stackoverflow.com/questions/31622620/opencv-good-training-output-but-cascade-classifier-is-poor
 
-
-Links I used to help fix the samples:
+Sources for building Python Scripts:
 https://stackoverflow.com/questions/1405602/how-to-adjust-the-quality-of-a-resized-image-in-python-imaging-library
 https://pillow.readthedocs.io/en/stable/reference/Image.html
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html
-https://www.oreilly.com/library/view/programming-computer-vision/9781449341916/ch01.html
-
-With the vec issues:
-I used the 3rd link the in reference list folder, as well as the other below as I had trouble with the vec files. I figured out that due to corrupt images in the neg directory that I could not completly train everything even with the script. I created a script to check the folder for corrupt images, I then removed those corrupt images.
-
-https://stackoverflow.com/questions/52096891/opencv-createsamples-not-creating-vec-files-in-floydhub
-
-Building stuff on zacks pc:
-http://answers.opencv.org/question/8891/trouble-when-use-opencv_traincascadeexe/
 https://medium.com/analytics-vidhya/how-to-build-a-face-detection-model-in-python-8dc9cecadfe9
+
+
+
+
+#Ignore anything below this point.
+Possibly use this link for testing and making a better webcam.py
 https://becominghuman.ai/face-detection-using-opencv-with-haar-cascade-classifiers-941dbb25177
-https://stackoverflow.com/questions/43851945/speeden-up-haar-cascade-training-process
-https://stackoverflow.com/questions/21093268/training-a-haar-cascade-took-very-little-time
 
-Attendance Count Finished?
-https://medium.com/analytics-vidhya/how-to-build-a-face-detection-model-in-python-8dc9cecadfe9
-https://stackoverflow.com/questions/26869820/opencv-haar-cascade-face-tracking-is-very-slow
-https://stackoverflow.com/questions/20801015/recommended-values-for-opencv-detectmultiscale-parameters
 

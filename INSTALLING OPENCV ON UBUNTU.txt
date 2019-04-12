@@ -8,7 +8,7 @@
 
 5. sudo apt-get install python3-dev python3-pip build-essential cmake unzip pkg-config libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran unzip
 
-6. pip3 install numpy scipy Pillow
+6. pip3 install numpy scipy Pillow opencv-python
 
 7. wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.5.zip
 
