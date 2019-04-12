@@ -27,7 +27,7 @@ After dependancies are installed, open up gitbash and follow these instructions.
 
 14. python random_sample.py
 
-15. For random_sample.py it will ask you to pick how many positive and negative samples you want reference the "bash commands.txt" and see the amount of samples it recommends for the particular model you choose.. And it will ask you to pick  a data set which in this case with be the Caltech data set.
+15. For the "random_sample.py" script it will ask you to pick how many positive and negative samples you want reference the "bash commands.txt" and see the amount of samples it recommends for the particular model you choose.
 
 16. Download from here: https://sourceforge.net/projects/opencvlibrary/files/3.4.5/opencv-3.4.5-vc14_vc15.exe/download and run the extractor, you can extract this to any folder you want.
 
@@ -37,8 +37,8 @@ After dependancies are installed, open up gitbash and follow these instructions.
 
 19. Next open up the "bash commands.txt" file and run the commands in order for the model you are choosing. Make sure to check the example section all the way at bottom of the file, so you can adjust your commands to run for windows. 
 
-20. The output of your model tests will be stored in a file called "output_XXX_X.txt" where X is replaced with your type of model, which located in the root directory.
+20. The output of your model tests will be stored in a file called "output_X.txt" where X is replaced with your type of model, which located in the root directory.
 
 21. python3 webcam.py
 
-22. The application would be running now, press q to take a picture of the current attendace and quit the application.
+22. The application would be running now, press q to take a picture of the current attendance and quit the application.

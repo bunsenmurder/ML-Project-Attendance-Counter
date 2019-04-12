@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 
 
 
-face_cascade = cv2.CascadeClassifier('classifier/cascade.xml')
+face_cascade = cv2.CascadeClassifier('models/cascade.xml')
 
-video_capture = cv2.VideoCapture(1)
+video_capture = cv2.VideoCapture(0)
 
 while True:
     # Capture frame-by-frame
@@ -17,7 +17,7 @@ while True:
 
     faces = face_cascade.detectMultiScale(
         gray,
-        scaleFactor=1.1,
+        #scaleFactor=1.1,
         minNeighbors=5,
         minSize=(30, 30),
         flags=cv2.CASCADE_SCALE_IMAGE

@@ -4,7 +4,7 @@ import shutil
 from PIL import Image
 
 path = r'ImageDB'
-nfile=r'Images/RandomFile'
+nfile=r'Images'
 filearray= ['Pos', 'Neg']
 
 i,j=0,0
@@ -17,18 +17,7 @@ pos_in = int(p)
 print('How many negative samples do you want?')
 n = input()
 neg_in = int(n)
-print('\n')
-print('1) Caltech 101 Faces','\n')
-print('2) MIT-CBCL Faces','\n')
-print('Please select a number representing an option above:')
-input = input()
-input = int(input)
-if input == 1:
-    pos_set = 435
-    file_ext = '.jpg'
-if input == 2:
-    pos_set = 3240
-    file_ext = '.pgm'
+
 while i < len(filearray):
     fold_p = path + '/' + filearray[i]
     fold_d= os.listdir(fold_p)
@@ -55,9 +44,9 @@ while i < len(filearray):
     if filearray[i] == 'Pos':
         f = open("positives.txt","a+")
         f.truncate(0)
-        nums = random.sample(range(1,pos_set + 1), pos_in)
+        nums = random.sample(range(1,436), pos_in)
         while j < pos_in:
-            text_p = 'pos_' + str(nums[j]) + file_ext
+            text_p = 'pos_' + str(nums[j]) + '.jpg'
             file_path = nfile + '/' + filearray[i] + '/' + text_p
             if text_p in fold_d:
                 shutil.copy(fold_p + '/' + text_p, output)

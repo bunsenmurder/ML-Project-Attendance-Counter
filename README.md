@@ -11,13 +11,12 @@
 5. python3 runFirst.py
 6. cd ..
 7. python3 crop_pos.py
-8. For the "crop_pos.py" script it will ask you which data set to choose, enter the number that corresponds with the dataset(Cal tech 101 or MIT CBCL) you wish to use.
-9. python random_sample.py
-10. For random_sample.py it will ask you to pick how many positive and negative samples you want reference the "bash commands.txt" and see the amount of samples it recommends for the particular model you choose. Just make sure NOT to select more 435 positive samples or more than 3020 negative samples.
-11. Make sure you backup any previously trained models then remove all files within the classifier directory. 
-12. Next open up the "bash commands.txt" file and run the commands in order for the model you are choosing. Note: The opencv_traincascade process will can take from a 1-5 days depending on your computing, so be patient and let it run.
-13. Once you follow the directions for your particular model, the model itself should be saved as "cascade.xml" in the classifier directory. 
-15. The output of your model tests will be stored in a file called "output_XXX_X.txt" where X is replaced with your type of model, which located in the root directory.
+8. python random_sample.py
+9. For the "random_sample.py" script it will ask you to pick how many positive and negative samples you want reference the "bash commands.txt" and see the amount of samples it recommends for the particular model you choose. Just make sure NOT to select more 435 positive samples or more than 3019 negative samples.
+10. Make sure you backup any previously trained models then remove all files within the classifier directory. 
+11. Next open up the "bash commands.txt" file and run the commands in order for the model you are choosing. Note: The opencv_traincascade process can take from a 1-5 days depending on your processor and memory.
+12. Once you follow the directions for your particular model, the model itself should be saved as "cascade.xml" in the classifier directory. 
+13. The output of your model tests will be stored in a file called "output_X.txt" where X is replaced with your type of model, which located in the classifier directory.
 14. python3 webcam.py
 15. The application would be running now, press q to take a picture of the current attendace and quit the application.
 
