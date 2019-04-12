@@ -15,8 +15,8 @@ nfile= 'ImageDB/Annotations/Faces_3'
 output = 'ImageDB/Pos_cropped_no_scale'
 output2 = 'ImageDB/Pos'
 for files in os.listdir(output2):
-	os.remove(output2 + '/'+ files)
-        os.remove(output + '/'+ files)
+    os.remove(output2 + '/'+ files)
+    os.remove(output + '/'+ files)
 for i in range(1,436):
     if i < 10:
         image = 'image_000' + str(i) + '.jpg'
@@ -34,7 +34,7 @@ for i in range(1,436):
     x3 = coor[2]
     x4 = coor[3]
     im = Image.open(path +'/' + image)
-	im = im.crop((x3,x1, x4,x2))
+    im = im.crop((x3,x1, x4,x2))
     im.save(output + '/' + 'pos_' + str(i) + '.jpg', "JPEG")
     im = im.resize((100, 128), Image.LANCZOS)
     im.save(output2 + '/' + 'pos_' + str(i) + '.jpg', "JPEG", optimize = True, quality=90)
