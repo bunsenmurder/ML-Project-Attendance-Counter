@@ -5,7 +5,7 @@
 
 ## Directions For Linux 
 1. Follow the "INSTALLING OPENCV ON UBUNTU.txt" for install instructions of dependances on Linux.
-2. git clone git@github.com:bunsenmurder/ML-Project-Attendance-Counter.git
+2. Clone this repository.
 3. cd ML-Project-Attendance-Counter
 4. cd tar
 5. python3 runFirst.py
