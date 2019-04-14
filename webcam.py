@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 
 
 
-face_cascade = cv2.CascadeClassifier('models/cascade.xml')
+face_cascade = cv2.CascadeClassifier('models/model2/classifier/cascade.xml')
 
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture(1)
 
 while True:
     # Capture frame-by-frame

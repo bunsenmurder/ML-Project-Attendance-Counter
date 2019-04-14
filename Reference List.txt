@@ -32,12 +32,6 @@ https://stackoverflow.com/questions/1405602/how-to-adjust-the-quality-of-a-resiz
 https://pillow.readthedocs.io/en/stable/reference/Image.html
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html
 https://medium.com/analytics-vidhya/how-to-build-a-face-detection-model-in-python-8dc9cecadfe9
-
-
-
-
-#Ignore anything below this point.
-Possibly use this link for testing and making a better webcam.py
 https://becominghuman.ai/face-detection-using-opencv-with-haar-cascade-classifiers-941dbb25177
 
 
