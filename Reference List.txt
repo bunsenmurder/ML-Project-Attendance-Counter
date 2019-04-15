@@ -1,6 +1,6 @@
 Dataset sources:
 Face_easy category from http://www.vision.caltech.edu/Image_Datasets/Caltech101/
-negatives dataset from https://github.com/handaga/tutorial-haartraining/tree/master/data/negatives
+negatives and Test dataset from https://github.com/handaga/tutorial-haartraining/tree/master/data/
 
 External Scripts:
 mergevc.py - https://github.com/wulfebw/mergevec

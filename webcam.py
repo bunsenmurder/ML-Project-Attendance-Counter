@@ -4,10 +4,9 @@ import cv2 as cv2
 from matplotlib import pyplot as plt
 
 
+face_cascade = cv2.CascadeClassifier('models/model4/classifier/cascade.xml')
 
-face_cascade = cv2.CascadeClassifier('models/model2/classifier/cascade.xml')
-
-video_capture = cv2.VideoCapture(1)
+video_capture = cv2.VideoCapture(0)
 
 while True:
     # Capture frame-by-frame
@@ -19,7 +18,7 @@ while True:
         gray,
         #scaleFactor=1.1,
         minNeighbors=5,
-        minSize=(30, 30),
+        minSize=(25, 32),
         flags=cv2.CASCADE_SCALE_IMAGE
     )
     print('Total number of Faces found', len(faces))
