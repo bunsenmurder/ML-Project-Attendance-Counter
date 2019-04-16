@@ -16,9 +16,9 @@ while True:
 
     faces = face_cascade.detectMultiScale(
         gray,
-        #scaleFactor=1.1,
-        minNeighbors=5,
-        minSize=(25, 32),
+        scaleFactor=1.1,
+        minNeighbors=3,
+        minSize=(1, 1),
         flags=cv2.CASCADE_SCALE_IMAGE
     )
     print('Total number of Faces found', len(faces))
