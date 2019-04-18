@@ -1,10 +1,13 @@
-##Note Documentation for OpenCV create_samples and opencv_traincascade are documented here: https://docs.opencv.org/3.4.5/dc/d88/tutorial_traincascade.html
+#Note 1: Documentation for OpenCV create_samples and opencv_traincascade are documented here: https://docs.opencv.org/3.4.5/dc/d88/tutorial_traincascade.html
 
-Total False Alarm rate is calculated as set false alarm rate which is FA_true = FA^number of training stages  - Ex: .5^20 = 9.6e-07 or Almost 0% false alarm rate.
+#Note 2: Total False Alarm rate is calculated as set false alarm rate which is FA_true = FA^number of training stages  - Ex: .5^20 = 9.6e-07 or Almost 0% false alarm rate.
 True hit rate = HR^number of training stages. Ex: .999^20 = .98 or 98% accuracy
 
+#Note 3:  make sure to change log file output name depending on accuracy, so if it is Model 1 at 10e-5, then append _1e-5 to output_1.log which should look like this output_1_1e-5.log
 
-##Caltech 101 sample Models - Set MaxDepth to 2(which changes from using decision stumps to decision trees), with a minHitRate of .999 accuracy.
+#Note 4: Adjustment to commands for running models on Windows is shown all the way at the bottom.
+
+##Caltech 101 sample Models - Set MaxDepth to 2(which changes from using decision stumps to decision trees), with a minHitRate of .999 accuracy. 
 
 Model 1: For this we computed two copies of this with a acceptaceRatioBreakValue of 10e-5 and 10e-6
 Choose random sample of 100 Positives, 1000 negatives when prompted by the 'random_sample.py' script.
@@ -23,7 +26,7 @@ perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "opencv_creat
 
 python mergevec.py -v samples -o samples.vec
 
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_4.log
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_2.log
 
 
 Model 3: For this we computed three copies of this with a acceptaceRatioBreakValue of 10e-5 , 4e-5, and 10e-6
@@ -33,7 +36,7 @@ perl bin/createsamples.pl positives.txt negatives.txt samples 4785 "opencv_creat
 
 python mergevec.py -v samples -o samples.vec
 
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 4350 -numNeg 3000 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_5.log
+opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 4350 -numNeg 3000 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_3.log
 
 
 
@@ -41,7 +44,7 @@ opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 
 
 
 
-Example of how to run these commands if using a Windows machine.
+# Example of how to run these commands if using a Windows machine.
 Open in Gitbash:
 perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "./opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64" 
 

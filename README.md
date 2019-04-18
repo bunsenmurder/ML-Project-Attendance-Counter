@@ -20,6 +20,9 @@
 14. python3 webcam.py
 15. The application would be running now, press q to take a picture of the current attendace and quit the application.
 
+Optional:
+16. To view Hit rate and False Alarm rates of our models , run the test.py file and it will output the results within terminal for each model file in our model folder.
+
 ## Directions for Windows
 1. Check the "Directions for Windows.txt" for how to run on a Windows Machine.
 
