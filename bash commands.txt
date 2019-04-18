@@ -6,7 +6,7 @@ True hit rate = HR^number of training stages. Ex: .999^20 = .98 or 98% accuracy
 
 ##Caltech 101 sample Models - Set MaxDepth to 2(which changes from using decision stumps to decision trees), with a minHitRate of .999 accuracy.
 
-Model 1:
+Model 1: For this we computed two copies of this with a acceptaceRatioBreakValue of 10e-5 and 10e-6
 Choose random sample of 100 Positives, 1000 negatives when prompted by the 'random_sample.py' script.
 
 perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"  
@@ -15,27 +15,8 @@ python mergevec.py -v samples -o samples.vec
 
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_1.log
 
-Model 2: Changed breakout value from 10e-5 to 10e-6 
-Choose random sample of 100 Positives, 1000 negatives when prompted by the 'random_sample.py' script.
 
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"  
-
-python mergevec.py -v samples -o samples.vec
-
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -acceptanceRatioBreakValue 10e-6 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_2.log
-
-Model 3[Under Review]: Changed resolution to 50x64
-Choose random sample of 100 Positives, 1000 negatives when prompted by the 'random_sample.py' script.
-
-perl bin/createsamples.pl positives.txt negatives.txt samples 1500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 50 -h 64"  
-
-python mergevec.py -v samples -o samples.vec
-
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 1000 -numNeg 600 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 50 -h 64 | tee output_3.log
-
-
-
-Model 4:
+Model 2: For this we computed two copies of this with a acceptaceRatioBreakValue of 10e-5 and 10e-6
 Choose random sample of 250 Positives, 2000 negatives when prompted by the 'random_sample.py' script.
 
 perl bin/createsamples.pl positives.txt negatives.txt samples 3500 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"
@@ -45,7 +26,7 @@ python mergevec.py -v samples -o samples.vec
 opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numPos 2500 -numNeg 1500 -numStages 20 -acceptanceRatioBreakValue 10e-5 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -featureType HAAR -minHitRate 0.999 -maxDepth 2 -mode ALL -maxFalseAlarmRate 0.5 -w 25 -h 32 | tee output_4.log
 
 
-Model 5[Running]: 
+Model 3: For this we computed three copies of this with a acceptaceRatioBreakValue of 10e-5 , 4e-5, and 10e-6
 Choose random sample of 435 Positives, 3019 negatives when prompted by the 'random_sample.py' script.
 
 perl bin/createsamples.pl positives.txt negatives.txt samples 4785 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle .1746 -maxyangle .1746 maxzangle 0.1746 -maxidev 40 -w 25 -h 32"

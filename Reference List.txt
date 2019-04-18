@@ -31,7 +31,8 @@ Sources for building Python Scripts:
 https://stackoverflow.com/questions/1405602/how-to-adjust-the-quality-of-a-resized-image-in-python-imaging-library
 https://pillow.readthedocs.io/en/stable/reference/Image.html
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html
+https://docs.scipy.org/doc/numpy/
 https://medium.com/analytics-vidhya/how-to-build-a-face-detection-model-in-python-8dc9cecadfe9
 https://becominghuman.ai/face-detection-using-opencv-with-haar-cascade-classifiers-941dbb25177
-
+https://datascience.stackexchange.com/questions/32328/export-pandas-to-dictionary-by-combining-multiple-row-values
 
