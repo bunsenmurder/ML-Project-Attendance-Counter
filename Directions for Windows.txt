@@ -1,4 +1,5 @@
 After dependancies are installed, open up gitbash and follow these instructions.
+
 1. Download and install this version of python first https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe
 
 2. Then download and install Perl from here http://strawberryperl.com 
