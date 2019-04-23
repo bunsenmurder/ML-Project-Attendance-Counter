@@ -60,9 +60,3 @@ After dependancies are installed, open up gitbash and follow these instructions.
 20. The output of your model tests will be stored in a file called "output_X.txt" where X is replaced with your type of model, which located in the root directory.
 21. python3 webcam.py
 22. The application would be running now, press q to take a picture of the current attendance and quit the application.
-
-## The problem we wanted to solve.
-Teachers use up valuable class time taking attendance when they could be spending more time teaching. In addition, there are several loopholes to traditional attendance systems. For example, one student can write another student’s name on an attendance sheet. At a large university with several hundred students, attendance can take a very long time if it is done at all. Generally speaking, taking roll at the beginning of class is an inconvenience that can be avoided, so we’re creating a system to solve this problem.
-
-## Our solution and its features.
-Our solution is a facial recognition software that will automate the attendance process. It will receive input from a webcam, and will simultaneously process all of the students in the classroom. Ideally, it would label each face with a name, but we acknowledge that this is a very ambitious goal for our skill sets. Without recognizing individual faces, the software counts the number of heads in the room and will notify the user how this compares to the expected number. At Florida Polytechnic, there is a webcam at the back of every classroom, which integrates with our software. This way, professors are not required to bring their own cameras or take a picture with their phones. Using OpenCV we would access the camera, and to detect objects within the room and correctly identify a person using the model we train within it. 
